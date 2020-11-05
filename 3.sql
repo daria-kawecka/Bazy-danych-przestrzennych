@@ -15,10 +15,10 @@ CREATE EXTENSION postgis;
 --4:
 SELECT COUNT(*) FROM (SELECT p.* FROM popp p , majrivers m
 WHERE ST_DWithin(m.geom,p.geom,100000) = 'true' AND p.f_codedesc='Building'
-GROUP BY p.gid) AS budynki
+GROUP BY p.gid) AS buildings
 
 CREATE TABLE tableB AS  SELECT p.* FROM popp p , majrivers m
-WHERE ST_DWithin(m.geom,p.geom,100000) = 'true' AND p.f_codedesc LIKE 'Building' GROUP BY p.gid
+WHERE ST_DWithin(m.geom,p.geom,100000) = 'true' AND p.f_codedesc='Building' GROUP BY p.gid
 
 --5a:
 SELECT airports.name, airports.elev INTO airportsNew FROM public.airports;
